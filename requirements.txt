@@ -1,0 +1,4 @@
+pycrypto
+xmltodict
+passlib
+docopt
