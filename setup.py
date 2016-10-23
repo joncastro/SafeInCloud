@@ -1,10 +1,9 @@
 from setuptools import setup
-from desafe import __version__
 
 setup(
     zip_safe=True,
     name='desafe',
-    version=__version__,
+    version='0.0.2',
     author='pjon',
     py_modules=['desafe'],
     description='An utility to decrypt Safe in Cloud password files',

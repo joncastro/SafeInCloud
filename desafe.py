@@ -33,9 +33,6 @@ from docopt import docopt
 from Crypto.Cipher import AES
 from passlib.utils import pbkdf2
 
-__all__ = ['desafe']
-__version__ = '0.0.1'
-
 
 class Desafe:
 
