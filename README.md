@@ -49,6 +49,8 @@ Global labels will be printed by given `label` and the database file. For exampl
 
 ### Desafe help
 
+For a complete description of the command utility, please refer to the usage.
+
 ```
 $ desafe -h
 Desafe for Safe In Cloud (safe-in-cloud.com).
