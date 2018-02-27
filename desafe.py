@@ -142,7 +142,7 @@ class Shell(object):
 
             for label in self.doc[db]['label']:
                 if '@name' in label:
-                    print "label: {}".format(label['@name'])
+                    print u'label: {}'.format(label['@name'])
 
     def print_cards(self):
         for db in self.doc:
@@ -186,10 +186,9 @@ class Shell(object):
                                 if '#text' in field and field['#text']:
                                     ofield['text'] = field['#text']
                                 ocard['field'].append(ofield)
-
-                        print "Card: {}".format(ocard['title'])
+                        print u'Card: {}'.format(ocard['title'])
                         for field in ocard['field']:
-                            print "  {}: {}".format(field['name'], field['text'])
+                            print u'  {}: {}'.format(field['name'], field['text'])
 
 
 def main():

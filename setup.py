@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     zip_safe=True,
     name='desafe',
-    version='0.0.3',
+    version='0.0.4',
     author='pjon',
     py_modules=['desafe'],
     description='An utility to decrypt Safe in Cloud password files',
@@ -20,7 +20,7 @@ setup(
         ]
     },
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Alpha',
         'Environment :: Console',
         'Intended Audience :: Developers',
         'Intended Audience :: System Administrators',
