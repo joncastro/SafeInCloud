@@ -91,7 +91,7 @@ def is_valid(filters, content):
 class Shell(object):
 
     def __init__(self):
-        self.args = docopt(__doc__, version='Desafe for Safe In Cloud 0.0.1')
+        self.args = docopt(__doc__, version='Desafe for Safe In Cloud 0.0.5')
         # print self.args
 
         file_path = self.args['<file>']
