@@ -1,5 +1,5 @@
-# docker latest python image
-image: python
+# docker latest ubuntu image
+image: ubuntu
 
 # two stages, first test and validate code and then deploy if it is a tag such as vX.Y.Z
 stages:
@@ -10,6 +10,7 @@ stages:
 test:
   stage: test
   script:
+    - apt update && apt-get install python3 python3-pip -y && update-alternatives --install /usr/bin/python python /usr/bin/python3 1  && update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
     - pip install -r dev-requirements.txt
     - black --check desafe.py tests
     - tox
