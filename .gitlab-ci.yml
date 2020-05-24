@@ -1,0 +1,39 @@
+# docker latest ubuntu image
+image: ubuntu
+before_script:
+  - apt update && apt-get install python3 python3-pip build-essential -y && update-alternatives --install /usr/bin/python python /usr/bin/python3 1  && update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
+
+# two stages, first test and validate code and then deploy if it is a tag such as vX.Y.Z
+stages:
+  - test
+  - deploy
+
+# test source code formatting and tox testing
+test:
+  stage: test
+  script:
+    - pip install -r dev-requirements.txt
+    - black --check desafe.py tests
+    - tox
+
+deploy_staging:
+  stage: deploy
+  script:
+    - make package
+    - pip install twine
+    - twine upload -u $PYPI_USER -p $PYPI_PWD --repository-url $PYPI_TEST_REPO dist/*
+  except:
+    - tags
+
+# deploy to pypi if there is a new tag
+# the tag should be named vX.Y.Z
+deploy:
+  stage: deploy
+  script:
+    - make package
+    - pip install twine
+    - twine upload dist/* -u $PYPI_USER -p $PYPI_PWD
+  only:
+    - tags
+  except:
+    - branches
