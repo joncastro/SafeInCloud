@@ -25,7 +25,7 @@ Options:
 import struct
 import sys
 import getpass
-import StringIO
+import io
 import xmltodict
 import zlib
 import json
@@ -52,18 +52,17 @@ class Desafe:
     def decrypt(self):
 
         # load database
-        with open(self.desafe_filename, "r") as f:
+        with open(self.desafe_filename, "rb") as f:
             self.__get_short(f)  # magic =
             self.__get_byte(f)  # sver =
             salt = self.__get_array(f)
-
             skey = pbkdf2.pbkdf2(self.password, salt, 10000, 32)
             iv = self.__get_array(f)
             cipher = AES.new(skey, AES.MODE_CBC, iv)
             salt2 = self.__get_array(f)
             block = self.__get_array(f)
             decr = cipher.decrypt(block)
-            sub_fd = StringIO.StringIO(decr)
+            sub_fd = io.BytesIO(decr)
             iv2 = self.__get_array(sub_fd)
             pass2 = self.__get_array(sub_fd)
             self.__get_array(sub_fd)  # check =
