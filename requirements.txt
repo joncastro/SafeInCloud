@@ -1,4 +1,4 @@
-pycrypto
+pycryptodome
 xmltodict
 passlib
 docopt
