@@ -30,7 +30,7 @@ import xmltodict
 import zlib
 import json
 from docopt import docopt
-from Crypto.Cipher import AES
+from Cryptodome.Cipher import AES
 from passlib.utils import pbkdf2
 
 
@@ -145,7 +145,7 @@ class Shell(object):
 
             for label in self.doc[db]["label"]:
                 if "@name" in label:
-                    print(u"label: {}".format(label["@name"]))
+                    print("label: {}".format(label["@name"]))
 
     def print_cards(self):
         for db in self.doc:
@@ -197,9 +197,9 @@ class Shell(object):
                                 if "#text" in field and field["#text"]:
                                     ofield["text"] = field["#text"]
                                 ocard["field"].append(ofield)
-                        print(u"Card: {}".format(ocard["title"]))
+                        print("Card: {}".format(ocard["title"]))
                         for field in ocard["field"]:
-                            print(u"  {}: {}".format(field["name"], field["text"]))
+                            print("  {}: {}".format(field["name"], field["text"]))
 
 
 def main():
