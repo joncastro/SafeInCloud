@@ -30,7 +30,7 @@ import xmltodict
 import zlib
 import json
 from docopt import docopt
-from Crypto.Cipher import AES
+from Cryptodome.Cipher import AES
 from passlib.utils import pbkdf2
 
 
