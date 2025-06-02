@@ -9,8 +9,6 @@ strategy:
       python.version: '3.9'
     Python312:
       python.version: '3.12'
-    Python315:
-      python.version: '3.15'
 
 steps:
 - task: UsePythonVersion@0
