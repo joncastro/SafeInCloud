@@ -128,7 +128,9 @@ class Shell(object):
         if self.args["<output-file>"]:
             try:
                 with open(self.args["<output-file>"], "w") as f:
-                    f.write(output)
+                    f.write(
+                        output.decode("utf-8") if isinstance(output, bytes) else output
+                    )
             except Exception:
                 print(
                     "ERROR: could not write on '{}'".format(self.args["<output-file>"])
