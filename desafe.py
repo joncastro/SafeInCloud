@@ -137,7 +137,7 @@ class Shell(object):
                 )
                 sys.exit(1)
         else:
-            print(output)
+            print(output.decode("utf-8") if isinstance(output, bytes) else output)
 
     def print_labels(self):
         for db in self.doc:
