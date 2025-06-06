@@ -169,6 +169,11 @@ class Shell(object):
                         ocard = card
                         if not self.args["--password"] and "field" in card:
                             fields = []
+                            # ensure field is a list
+                            if not isinstance(card["field"], (list)):
+                                field = []
+                                field.append(card["field"])
+                                card["field"] = field
                             for field in card["field"]:
                                 if "@type" not in field or "password" != field["@type"]:
                                     fields.append(field)
@@ -202,6 +207,14 @@ class Shell(object):
                         print("Card: {}".format(ocard["title"]))
                         for field in ocard["field"]:
                             print("  {}: {}".format(field["name"], field["text"]))
+                        if "notes" in card and card["notes"]:
+                            lines = card["notes"].splitlines()
+                            for i, line in enumerate(lines):
+                                print(
+                                    "  {} {}".format(
+                                        "      " if i != 0 else "Notes:", line
+                                    )
+                                )
 
 
 def main():
