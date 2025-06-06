@@ -32,7 +32,6 @@ import json
 from docopt import docopt
 from Cryptodome.Cipher import AES
 from passlib.utils import pbkdf2
-from pprint import pprint
 
 
 class Desafe:
